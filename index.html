@@ -21,7 +21,7 @@
 
 <!-- META TAGS -->
 <meta content="I'm Deepak! I am a Senior Software Engineer with a passion for developing applications that make a positive impact on people's lives." name="description">
-<meta content="Deepak, Kumar, Jangir" name="keywords">
+<meta content="Deepak Kumar Jangir, Senior Software Engineer, Java, Spring Boot, Kafka, Kubernetes, Elasticsearch, Microservices" name="keywords">
 <meta content="index, follow" name="robots">
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
 <meta content="English" name="language">
@@ -181,6 +181,20 @@
   .socials a:hover{color:var(--accent);border-color:var(--accent);transform:translateY(-4px);box-shadow:0 10px 24px var(--glow)}
   .socials svg{width:20px;height:20px}
   footer{text-align:center;padding:40px 24px;color:var(--muted);font-size:.82rem;border-top:1px solid var(--line)}
+
+  /* ---- phones: one-row swipeable nav, tighter gutters ---- */
+  @media(max-width:640px){
+    nav{padding:10px 8px}
+    nav ul{flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;scrollbar-width:none;max-width:100%}
+    nav ul::-webkit-scrollbar{display:none}
+    nav a{padding:8px 12px;white-space:nowrap}
+    section{padding:64px 16px}
+    .final{padding:80px 16px}
+    .hero{padding:80px 16px 24px}
+    .scroll-hint{display:none}
+    .timeline{padding-left:26px}
+    .job::before{left:-26px}
+  }
 </style>
 </head>
 <body>
@@ -205,7 +219,7 @@
   <div class="avatar-wrap" id="tilt"><img src="images/deepakdaneva.jpg" alt="Deepak Kumar Jangir"></div>
   <h1>Hi, I'm <span class="grad">Deepak Kumar Jangir</span></h1>
   <div class="role"><span id="typed"></span><span class="cursor">&nbsp;</span></div>
-  <p class="lead">7+ years architecting scalable, cloud-native enterprise systems and high-performance data pipelines — turning legacy monoliths into Kafka-driven microservices.</p>
+  <p class="lead">8+ years architecting scalable, cloud-native enterprise systems and high-performance data pipelines — turning legacy monoliths into Kafka-driven microservices.</p>
   <p class="loc">📍 <a href="https://www.google.com/maps/place/Jaipur,+Rajasthan,+India" target="_blank" rel="noopener" style="border-bottom:1px dashed var(--accent);color:var(--accent)">Rajasthan, India</a> · 💻 Remote</p>
   <div class="cta">
     <a class="btn btn-primary" href="#contact">Get in touch →</a>
@@ -218,7 +232,7 @@
   <h2 class="title reveal"><span class="num">01.</span>About</h2>
   <p class="subtitle reveal">Senior Software Engineer with a proven track record modernizing legacy architectures, optimizing Elasticsearch ingestion, and shipping robust security frameworks under aggressive timelines. I work across Java/Spring Boot, Kafka, Kubernetes, and AI/ML-driven analysis.</p>
   <div class="stats reveal">
-    <div class="stat"><div class="n" data-to="7">0</div><div class="l">Years experience</div></div>
+    <div class="stat"><div class="n" data-to="8" data-suffix="+">0</div><div class="l">Years experience</div></div>
     <div class="stat"><div class="n" data-to="14" data-suffix="+">0</div><div class="l">Microservices modernized</div></div>
     <div class="stat"><div class="n" data-to="30" data-suffix="%">0</div><div class="l">Ingestion perf gain</div></div>
     <div class="stat"><div class="n" data-to="95" data-suffix="%">0</div><div class="l">PII scan accuracy</div></div>
@@ -243,7 +257,10 @@
       <span class="chip">Jenkins</span><span class="chip">Maven</span><span class="chip">npm</span><span class="chip">Shell Script</span><span class="chip">Snyk</span><span class="chip">Nexus</span><span class="chip">IntelliJ IDEA</span><span class="chip">VS Code</span>
     </div></div>
     <div class="skill-group"><h3>Frontend</h3><div class="chips">
-      <span class="chip">Angular</span>
+      <span class="chip">Angular</span><span class="chip">Ionic</span>
+    </div></div>
+    <div class="skill-group"><h3>Languages Spoken</h3><div class="chips">
+      <span class="chip">English · Full Professional</span><span class="chip">Hindi · Full Professional</span>
     </div></div>
   </div>
 </section>
@@ -294,6 +311,7 @@
   <h2 class="title reveal"><span class="num">04.</span>Open Source &amp; Projects</h2>
   <p class="subtitle reveal">Selected work from my GitHub.</p>
   <div class="cards">
+    <div class="card reveal"><div class="ico">🌳</div><h3><a href="https://github.com/deepakdaneva/generations" target="_blank" rel="noopener">generations ↗</a></h3><p>Every family has a story. An installable PWA to build and explore your family tree on an interactive canvas, running entirely on Firebase. <a href="https://generations-prod.web.app" target="_blank" rel="noopener" style="color:var(--accent)">Live app ↗</a></p><div class="meta">Angular · Ionic · TypeScript · Firebase</div></div>
     <a class="card reveal" href="https://github.com/deepakdaneva/commons" target="_blank" rel="noopener"><div class="ico">🧰</div><h3>commons ↗</h3><p>A collection of essential utility libraries designed to simplify development tasks and boost productivity.</p><div class="meta">Java</div></a>
     <a class="card reveal" href="https://github.com/deepakdaneva/nifi-cli" target="_blank" rel="noopener"><div class="ico">⚙️</div><h3>nifi-cli ↗</h3><p>A Quarkus CLI application leveraging Apache NiFi REST APIs for command-line workflow management.</p><div class="meta">Quarkus · Java</div></a>
     <a class="card reveal" href="https://github.com/deepakdaneva/nifi-dd-nars" target="_blank" rel="noopener"><div class="ico">🔌</div><h3>nifi-dd-nars ↗</h3><p>Extended Apache NiFi processors and controller services for advanced data integration.</p><div class="meta">Apache NiFi</div></a>
@@ -396,11 +414,15 @@
     c.style.setProperty('--my',(e.clientY-r.top)+'px');
   }));
 
-  // email obfuscation: XOR+base64, decoded only on click so crawlers never see a mailto:
+  // email obfuscation: address reversed, XORed with a rolling key, base64'd and split into
+  // fragments; decoded only on a real (trusted) user click, so neither static crawlers nor
+  // scripts firing synthetic .click()/dispatchEvent ever see an address or mailto: in the page.
+  // ponytail: client-side obfuscation, not true secrecy; move to a contact form if spam appears.
   document.getElementById('emailBtn').addEventListener('click',e=>{
     e.preventDefault();
-    const k=0x2A, enc="Tk9PWktBBE5LRE9cS2pNR0tDRgRJRUc=";
-    const addr=[...atob(enc)].map(c=>String.fromCharCode(c.charCodeAt(0)^k)).join('');
+    if(!e.isTrusted)return;
+    const k="dkj-gen", enc=["CQQJAwsM","DwkMKkwR","AAAFD0RG","BhULAQ8="].join('');
+    const addr=[...atob(enc)].map((c,i)=>String.fromCharCode(c.charCodeAt(0)^k.charCodeAt(i%k.length))).reverse().join('');
     location.href='mailto:'+addr;
   });
 
